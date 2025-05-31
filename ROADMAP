@@ -1,0 +1,42 @@
+The features which I'm going to add in Nexus 1.0 -
+
+    1. Account system - Users will have different accounts and they will
+    have  different user id and  password. If user forgets  the password
+    then a 6 digit token would be generated and will be mailed to user &
+    user has to put that token in 2 min otherwise the token will expire.
+    On entry user will have 2 options, first would be of Login and other
+    would be of Register. And in login only user can  have that password
+    reset process.
+
+    2. TodoManager - Already made todomanager will be modified according
+    to the Nexus and it would be used as usual
+
+    3. News feed - In news feed there will be options for News and smart
+    mail.
+
+        - Smart Mail - In it, there would be option of subscribing it (which
+        will send a mail containing news to user on every day or time period
+        basis, user will be able to put time period  in it such as 2 days or
+        weekly basis) and second option  would be of  personalization, where
+        some question would be asked  to user and depending on  answers user
+        will get their newsletter.
+
+        - News - The second option  would allow  user to know  news  of  any
+        topic they want, they will give a input of a  topic and it's news of
+        it would be served.
+
+    4. Weather - There will be two options, Complete weather report and of a
+    specific date (but it should  be in range, it should not be like user is
+    asking for weather forcast of 1 month after)
+
+        - In the first option user will get full weather  report and it will
+        have report of past few days, today and forecast :)
+
+        - In second  option user will be asked for a date and if the date is
+        in the range then the data would be returned otherwise error to user.
+
+    5. Finances -  Here  user will  have 4 options, Stock market data, market
+    news, currency rates, and currency exchange/rates news.
+
+    6. Setting - In setting user will be able to change email id & username &
+    they will also be able to reset or delete account.
