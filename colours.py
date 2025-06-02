@@ -1,6 +1,9 @@
 """This module will be used to make
 our CLI colorful in the project"""
 
+#Importing....
+import random
+
 # Code for colorful CLI
 # ──────────────── Normal text colors ────────────────
 black        = "\033[0;30m"
@@ -23,11 +26,11 @@ light_cyan   = "\033[1;36m"
 light_white  = "\033[1;37m"
 
 #------------------Some New colors------------------
-orange = "\033[38;5;208m"
-electric_Blue = "\033[38;5;45m"
-mint_Green = "\033[38;5;48m"
-hot_Pink = "\033[38;5;198m"
-acidic_red = "\033[38;5;196m"
+orange           = "\033[38;5;208m"
+electric_Blue    = "\033[38;5;45m"
+mint_Green       = "\033[38;5;48m"
+hot_Pink         = "\033[38;5;198m"
+acidic_red       = "\033[38;5;196m"
 
 # ───────────── Unique, Vibrant New Colors ─────────────
 neon_purple    = "\033[38;5;201m"  # Ultra bright magenta-violet
@@ -60,7 +63,6 @@ mutant_cyan       = "\033[38;5;51m"    # Alien fluid dataflow
 # pink was 206; here are a few more shades:
 pink         = "\033[38;5;206m"
 magenta      = "\033[38;5;201m"
-orange       = "\033[38;5;208m"
 gold         = "\033[38;5;220m"
 lime         = "\033[38;5;118m"
 teal         = "\033[38;5;37m"
@@ -158,16 +160,16 @@ bg_violet      = "\033[48;5;135m"
 # Reset shortcut
 end      = "\033[0m"
 
+#Function for random color (! only some colors are chosen)
+def ran_col():
+    cols = [hazard_orange, electric_Blue, mint_Green, hot_Pink, acid_green]
+    random.shuffle(cols)
+    col = random.choice(cols)
+    return col
+
 if __name__ == "__main__":
     #Testing colors
     print(f"""
-{nuclear_yellow}Hi Guys, How are you all, is this looking good, just testing{end}
-{toxic_green}Hi Guys, How are you all, is this looking good, just testing{end}
-{venom_purple}Hi Guys, How are you all, is this looking good, just testing{end}
-{hazard_orange}Hi Guys, How are you all, is this looking good, just testing{end}
-{bio_blue}Hi Guys, How are you all, is this looking good, just testing{end}
-{plasma_violet}Hi Guys, How are you all, is this looking good, just testing{end}
-{slime_lime}Hi Guys, How are you all, is this looking good, just testing{end}
-{neon_pink}Hi Guys, How are you all, is this looking good, just testing{end}
-{mutant_cyan}Hi Guys, How are you all, is this looking good, just testing{end}
+{violet}Hi Guys, How are you all, is this looking good, just testing{end}
+
 """)
