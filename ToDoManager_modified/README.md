@@ -2,6 +2,9 @@
 
 A modular, command-line To-Do manager built with Python. It features deadline tracking, a gamified point system, a colorful CLI interface, persistent data storage, and a structured modular codebase. The project is designed to simulate a real-world software system with clean separation of concerns.
 
+## Important Note
+- This system is functionally similar to the original `ToDoManager (found at https://github.com/DevSaini4752/ToDoManager.git)`. However, specific modifications have been implemented to ensure compatibility with The Nexus project. These adjustments primarily involve the removal of animations and the system's continued operation after exiting.
+
 ## Features
 
 - Add, remove, and view tasks

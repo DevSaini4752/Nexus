@@ -10,7 +10,7 @@ import json
 import time
 import taskremover
 import colours as c
-from ToDoManager.resetdata import reset
+from resetdata import reset
 
 
 #Fucntion

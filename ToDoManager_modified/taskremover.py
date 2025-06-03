@@ -4,7 +4,6 @@ to remove a task from the task list (data.json)"""
 #Importing Modules
 import json
 import colours as c
-import pointmanager
 import time
 import datetime
 

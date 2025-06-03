@@ -6,7 +6,6 @@ data and other housekeeping"""
 import json
 import datetime
 import colours as c
-import anima_ToDo
 import resetdata
 
 #Func
@@ -30,7 +29,7 @@ def complete(*tasks):
                 poihis[f"{datetime.datetime.now()}"] = [+8, "Completed a task :)"]
 
                 #praising
-                anima_ToDo.praise()
+                print(f"{c.Electric_Blue}Congratulation!!! Task Completed{c.end}")
 
         # Updating the data in data,json
         with open("data.json", "w") as file_out:

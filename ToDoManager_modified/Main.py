@@ -2,23 +2,23 @@
 housekeeping."""
 
 #Importing modules
-import anima_ToDo
 import colours as c
 import initializer
 import taskdatamanager
 import taskremover
 import time
-import sys
 import resetdata
 import report
 import completetsk
 from randomcol import col
+from animations import type_write
 
 
 def main():
     #Using initializer to initialize sys
     initializer.initializer()
-    anima_ToDo.intro()
+    type_write(f"""{col()}Get ready to kick chaos out of your day! This is ToDoManager – your no-nonsense task tracker. Simple, fast, 
+and made to keep your brain clutter-free. Let’s roll{c.end}""",  wait=0.03)
 
     # This time process will run continuously run, and we will use
     # it such that initializer is run after every 2 mins to keep
@@ -101,8 +101,9 @@ Kindly choose (a/b/c/d) : {c.end}""").lower()
 
         elif user == "e":
             col()
-            anima_ToDo.outro()
-            sys.exit()
+            type_write(f"""{col()}Thank you for using our services. Stay focused, 
+stay organized - and keep building{c.end}""", wait=0.03)
+            break
 
         elif user == "f":
 
