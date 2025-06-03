@@ -1,0 +1,91 @@
+So this project will have following features and for very feature there
+will be a module to perform it, Features -
+
+1. Add task
+2. Remove task
+3. Points - For completing a task - +10 points
+        - For skipping the task - -5 points
+        - For not completing the task before deadline - -8 points
+4. History saving of user on how he is performing
+5. Time_Manager - As we will be needing to run the time in background and will
+                inform user again and again by opening terminal  and  printing 
+                for the information for reminding  the  user. And we will also 
+                save and calculate epoch as  if user  turn off the device then 
+                later also when he will open it we will be able to remind user.
+
+Miscellaneous Things (Add Task) -
+
+1. We will save the data in json file
+2. Only one main json file for all data will be there
+3. Json file will store following things - 
+        a. Epoch
+        b. Tasks
+        c. History(Dict) - 
+                Points
+                Pending tasks
+                Undone and skipped tasks
+                
+4. Json file name would be "data.json"
+
+Miscellaneous Things (Remove Task) -
+
+1. The module will allow user to delete a task
+2. Thing to be kept in mind is that whenever this
+module will be used some points will be  deducted
+or some update will be in it.
+
+# Here discussion on point system will be there
+Points system -
+    +ve -
+        Initializing task = +2
+        Completing the task = +8
+        total points for one task = +10
+
+    -ve -
+        Cancelling a task = -4
+        Crossing the deadline = -6
+        # More points will be deducted if user crosses
+        the deadline as if  user cancels the task then
+        he has admitted his mistake but not in deadline.
+
+    No deduct in points -
+        If user cancels a task in less then 2 mins then
+        no points  will be  deducted but  if it exceeds
+        2 mins then the case would be taken as normal &
+        4 points would be deducted.
+
+Point Manager -
+# The point manager will be used to manage points.
+It will take  some arguments and depending on the
+argument it will add or deduct points.
+
+    The point manager will take 3 args, one will be for
+    how  many  points to  be added or deducted and the
+    time will be taken by manager on itself through time
+    module. 2nd would be for what purpose was it deducted.
+
+    The 3rd arg would be taken as deadline time and that
+    deadline time would be taken from user in form of hours
+    or days like for home work I have 3hrs deadline so I'll
+    choose the option of hours and will put the task.
+
+
+Important Note -
+    A module would be there for a function which will be called every
+    time the  project is started and it will  check the  status  that
+    which  task's deadline is crossed whose deadline is near. If  the
+    deadline is near then it will warn the user. May this initializer
+    would be called many times depending on the situation.
+
+    The name of the module will be "initializer".
+
+Reset module -
+A module ahs been made and this will allow user to reset all of his data.
+
+Debugged -
+A bug was there, which was causing not to update the points in data
+sector and now it is fixed.
+
+Handled exceptions -
+Many more exceptions were there which I have handled so there is minimum
+chance of any error.
