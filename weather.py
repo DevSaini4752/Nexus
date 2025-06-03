@@ -50,7 +50,7 @@ What happened : {data['error']['info']}"""
         data['current']['temperature'] -= 32
         data['current']['temperature'] *= 5/9
 
-    #Unit
+    # Changing Unit from s/f/m to their specific name so that user can get it easily
     if unit == 'f':
         data['request']['unit'] = 'Fahrenheit'
     elif unit == 'm':
@@ -60,7 +60,8 @@ What happened : {data['error']['info']}"""
     if celsius:
         data['request']['unit'] = 'Celsius'
 
-    #Specifiying that what values has to be returned to user
+
+    #Specifiying that what values has to be returned to user (what should be the final output)
     output = f"""{col()}
 Time Zone : {data['location']['timezone_id']}{c.end}
 {col()}Observation Time (When data was last updated) : {data['current']['observation_time']}{c.end}
