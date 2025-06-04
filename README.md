@@ -4,6 +4,25 @@
 
 ---
 
+## ⚠ Important Notice
+
+### 🔐 Security Advisory
+
+Some earlier commits in this repository may contain exposed *API keys*.  
+These keys have already been *revoked or regenerated, and **no longer pose any security risk*.
+
+--
+
+🛡 *From the latest updates onward*, this project follows  
+*secure API key management practices* using more *robust and responsible methods*.
+
+--
+
+🧠 _This level of transparency is intentional and reflects the project's evolution_  
+_toward real-world, secure software development standards._
+
+---
+
 ## 🔧 Planned Features
 
 1. **📢 Live Reports Hub**  
