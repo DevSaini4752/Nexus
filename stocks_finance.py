@@ -12,12 +12,13 @@ from datetime import datetime
 import requests
 import colours as c
 from colours import ran_col as col
+import decouple
 
 #Some useful variable
-key = '2fb2ec09d702bd8ab2126cc94884d8d6'
+key = decouple.config("MARKETSTACK_API_KEY")
 url = 'https://api.marketstack.com/v2/eod?'
 
-#e.g. https://api.marketstack.com/v2/eod?access_key=2fb2ec09d702bd8ab2126cc94884d8d6&symbols=AAPL
+#e.g. https://api.marketstack.com/v2/eod?access_key=YOUR_ACESS_KEY&symbols=AAPL
 
 live_time = str(datetime.now())[0:11]
 

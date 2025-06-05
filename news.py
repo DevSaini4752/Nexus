@@ -4,7 +4,6 @@ topic and other things.
 
 - API - Newsapi
 - Website - 'https://newsapi.org/'
-- Key - 0b6667ee49024b04924e53f56121f96b
 - URL - 'https://newsapi.org/v2/endpoint?parameters'
 
 - Endpoints -
@@ -22,9 +21,10 @@ topic and other things.
 import requests
 from colours import ran_col as col
 import colours as c
+import decouple
 
 #Key in variable
-key = '0b6667ee49024b04924e53f56121f96b'
+key = decouple.config("NEWSAPI_API_KEY")
 
 #Function
 def getnews(topic='Science', num_of_art_user_want=10):
@@ -111,7 +111,7 @@ Description : {article["description"]}{c.end}
     return output
 
 if __name__=="__main__":
-    return_val = getnews(topic='RCB vs PBKS, IPL final', num_of_art_user_want=15)
+    return_val = getnews(topic='RCB vs PBKS, IPL final match', num_of_art_user_want=15)
 
     if not return_val is None:
         print(return_val)

@@ -23,6 +23,13 @@ _toward real-world, secure software development standards._
 
 ---
 
+## 🔐 Environment Variables
+1. Duplicate the example.env file and rename it to .env
+2. Fill in your own API keys and credentials
+3. Use it as normal
+- Using .env was the first initiative after I mistakenly uploaded the API keys
+---
+
 ## 🔧 Planned Features
 
 1. **📢 Live Reports Hub**  

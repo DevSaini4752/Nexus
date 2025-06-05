@@ -17,9 +17,10 @@ The function will take the following arguments -
 import requests
 import colours as c
 from colours import ran_col as col
+import decouple
 
 #Key in var
-key = 'd02d6a1f40206cd47f8e0267f2a45e7c'
+key = decouple.config('WEATHERSTACK_API_KEY')
 
 #---------------------------------------------------------------#
 
