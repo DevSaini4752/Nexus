@@ -40,8 +40,8 @@ def current_weather(unit="c", location="New Delhi", celsius=False):
     # success key is there because success key is only there when error occurs
 
     if 'success' in data:
-        error = f"""Success : {data['success']}
-What happened : {data['error']['info']}"""
+        error = f"""{c.acidic_red}Success : {data['success']}
+What happened : {data['error']['type']}{c.end}"""
         return error
 
 
