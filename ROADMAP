@@ -35,8 +35,8 @@ The features which I'm going to add in Nexus 1.0 -
         - In second  option user will be asked for a date and if the date is
         in the range then the data would be returned otherwise error to user.
 
-    5. Finances -  Here  user will  have 4 options, Stock market data, market
-    news, currency rates, and currency exchange/rates news.
+    5. Finances -  Here  user will  have 2 options, Stock  market  data  and
+    currency rates.
 
     6. Setting - In setting user will be able to change email id & username &
     they will also be able to reset or delete account.
