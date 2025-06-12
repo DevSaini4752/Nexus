@@ -4,3 +4,4 @@ APIs Data
 __pycache__/
 smart_mail/Info_for_smart_mails.txt
 smart_mail/SMTP.txt
+account_sys/user_accounts/

@@ -24,14 +24,18 @@ def email_content(subject, to, content, bcc=None):
     return struc
 
 def sending(content, subject, to, bcc=None):
+    if bcc is None:
+        bcc = []
     content = email_content(subject=subject, to=to, content=content, bcc=bcc)
     smtp = smtplib.SMTP("smtp.gmail.com", 587)
     smtp.ehlo()
     smtp.starttls()
-    smtp.login(mail, passw)
+    smtp.login(user=mail, password=passw)
     smtp.send_message(content)
     smtp.quit()
 
 #TRIALS AND TESTING
 if __name__=="__main__":
-    sending(subject="Trial and testing for a project, pls ignore", to="example@domain.abc", content="Trial and testing", bcc=["xyz@gmail.com", "abc@gmail.com"])
+    #Cheking for my mail
+    my_mail_for_testing = decouple.config("MY_PERSONAL_MAIL")
+    sending(subject="Trial and testing for a project, pls ignore", to=my_mail_for_testing, content="Trial and testing", bcc=["xyz@gmail.com", "abc@gmail.com"])
