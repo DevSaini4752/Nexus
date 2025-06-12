@@ -2,3 +2,5 @@
 APIs Data
 .idea
 __pycache__/
+smart_mail/Info_for_smart_mails.txt
+smart_mail/SMTP.txt
