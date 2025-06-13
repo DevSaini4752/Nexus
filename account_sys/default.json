@@ -8,5 +8,6 @@
     "total_num_mail_till_now": 0,
     "account_making_date": "will be kept as it is",
     "last_mail_sent_time": "",
-    "is_logged_in": false
+    "is_logged_in": false,
+    "have_smart_mail_news_subscription" : false
 }

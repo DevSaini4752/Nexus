@@ -74,6 +74,7 @@ Kindly put that token : """)
         data_format["last_mail_sent_time"] = live_time
         data_format["personalization"] = wanted_topics
         data_format["account_making_date"] = live_time
+        data_format["have_smart_mail_news_subscription"] = False
 
         json.dump(data_format, account_file, indent=4)
 
