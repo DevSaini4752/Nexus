@@ -70,7 +70,7 @@ Kindly put that token : """)
         data_format["username"] = username
         data_format["password"] = password
         data_format["email"] = email
-        data_format["is_logged_in"] = True
+        data_format["is_logged_in"] = False
         data_format["last_mail_sent_time"] = live_time
         data_format["personalization"] = wanted_topics
         data_format["account_making_date"] = live_time
