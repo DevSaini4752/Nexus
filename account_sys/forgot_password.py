@@ -10,6 +10,7 @@ import decouple
 from colours import ran_col as col
 import random
 from smart_mail import smart_mail
+from datetime import datetime
 
 #Getting variables from .env
 sys_mail = decouple.config("MAIL_FOR_SMART_MAIL")
@@ -45,9 +46,10 @@ Kindly insert the token : """)
             msg = f"{c.acidic_red}Invalid token, You failed to pass the verification....Try Again!!!"
             return msg
 
-        #Changing the password
+        #Changing the password and updating data
         data["password"] = new_password
         data["is_logged_in"] = False
+        data["last_mail_sent_time"] = str(datetime.now())[0:10]
 
         #Updating password at the file
         with open(f"user_accounts/{username}.json", "w") as file:

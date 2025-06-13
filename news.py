@@ -27,7 +27,9 @@ import decouple
 key = decouple.config("NEWSAPI_API_KEY")
 
 #Function
-def getnews(topic='Science', num_of_art_user_want=10):
+#Have kept the topic Current affairs by default, It will give all kinds of news
+# if in any case user or other module doesn't give any topic
+def getnews(topic='Current Affairs', num_of_art_user_want=10):
     url = 'https://newsapi.org/v2/everything?'
     parameters = {
         'q' : topic,
@@ -111,7 +113,7 @@ Description : {article["description"]}{c.end}
     return output
 
 if __name__=="__main__":
-    return_val = getnews(topic='RCB vs PBKS, IPL final match', num_of_art_user_want=15)
+    return_val = getnews(topic='Current affairs', num_of_art_user_want=15)
 
     if not return_val is None:
         print(return_val)

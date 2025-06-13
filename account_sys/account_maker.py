@@ -71,7 +71,7 @@ Kindly put that token : """)
         data_format["password"] = password
         data_format["email"] = email
         data_format["is_logged_in"] = False
-        data_format["last_mail_sent_time"] = live_time
+        data_format["last_mail_sent_time"] = live_time[0:10]
         data_format["personalization"] = wanted_topics
         data_format["account_making_date"] = live_time
         data_format["have_smart_mail_news_subscription"] = False

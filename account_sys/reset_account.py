@@ -41,6 +41,14 @@ def reset_account(username, password):
         with open(f"user_accounts/{username}.json", "w") as file:
             json.dump(default, file, indent=4)
 
+        #Removing name from the subscriber list
+        with open("subscribers.json", "r") as file:
+            subscribers = json.load(file)
+            del subscribers[data["username"]]
+
+        with open("subscribers.json", "w") as file:
+            json.dump(subscribers, file)
+
         #Ending the process
         return f"{col()}Account has been reset successfully!!!"
 
