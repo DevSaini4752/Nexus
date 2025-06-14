@@ -60,6 +60,10 @@ def reset_account(username, password):
             -> Kindly recheck for the username!!!{c.end}"""
         return msg
 
+    # If any other error occurs
+    except Exception as ex:
+        return f"{c.acidic_red}Error : {ex}{c.end}"
+
 #Trial and testing
 if __name__ == "__main__":
     #Checking for the wrong account by wrong username

@@ -50,6 +50,7 @@ Kindly insert the token : """)
         data["password"] = new_password
         data["is_logged_in"] = False
         data["last_mail_sent_time"] = str(datetime.now())[0:10]
+        data["dates_of_password_change"].append(str(datetime.now())[0:10])
 
         #Updating password at the file
         with open(f"user_accounts/{username}.json", "w") as file:
@@ -64,6 +65,10 @@ Kindly insert the token : """)
         msg = f"""{c.acidic_red}Error: Invalid username, No such username exists in our system
     -> Kindly recheck for the username!!!{c.end}"""
         return msg
+
+    # If any other error occurs
+    except Exception as ex:
+        return f"{c.acidic_red}Error : {ex}{c.end}"
 
 #Trial and testing
 if __name__ == "__main__":

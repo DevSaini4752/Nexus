@@ -14,10 +14,13 @@ from colours import ran_col as col
 
 #Function
 #This function would be used to add the username or update frequency
-def add_remove_subscriber(username, frequency, personalization=None, add=True):
+def add_remove_subscriber(username, frequency=2, personalization=None, add=True):
     #If add=True then will add the user
     #If add=False then will remove the user
     try:
+        #Confirming tha frequency is int
+        frequency = int(frequency)
+
         #Turning on the subscription in accounts data (in user_accounts)
         with open(f"user_accounts/{username}.json", "r") as file:
             account_data = json.load(file)
@@ -65,6 +68,10 @@ def add_remove_subscriber(username, frequency, personalization=None, add=True):
     except KeyError:
         return f"{c.acidic_red}You were already not a subscriber!!!{c.end}"
 
+    # If any other error occurs
+    except Exception as ex:
+        return f"{c.acidic_red}Error : {ex}{c.end}"
+
 #Trial and testing
 if __name__ == "__main__":
     #Trying with a wrong username (Adding)
@@ -74,7 +81,7 @@ if __name__ == "__main__":
     print(add_remove_subscriber("Dev", 7, personalization=["Dogs", "War", "Cars"]))
 
     #Trying with a wrong username (Removing)
-    print(add_remove_subscriber("Iron Man", 7, add=False))
+    print(add_remove_subscriber("Iron Man", add=False))
 
     #Trying with a right username (Removing)
-    print(add_remove_subscriber("Spider Man", 7, add=False))
+    print(add_remove_subscriber("Spider Man", add=False))
