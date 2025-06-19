@@ -17,19 +17,26 @@ would be used"""
 import json
 import colours as c
 from colours import ran_col as col
-import subscription
-import forgot_password
-import reset_account
+import account_sys.subscription as subscription
+import account_sys.forgot_password as forgot_password
+import account_sys.reset_account as reset_account
 import os
 import sys
 from smart_mail import smart_mail
 import random
+from get_path import get_path
+
+#Path for subscribers.json
+subscribers_path = get_path("account_sys", "subscriber.json")
 
 #Functions for different purposes
 #For extracting the data of the user
 def get_data(username, structured=True):
     try:
-        with open(f"user_accounts/{username}.json", "r") as file:
+        # Getting the path so that we can access that file anywhere
+        indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+
+        with open(f"{indi_acc_path}", "r") as file:
             user_data = json.load(file)
             pass_date = user_data["dates_of_password_change"]
             pass_date = ", ".join(pass_date)
@@ -65,13 +72,17 @@ Do you have newsletter subscription - {user_data["have_smart_mail_news_subscript
 
 #Function for editing personalization of user's news
 def personalisation(username):
+
+    # Getting the path so that we can access that file anywhere
+    indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+
     user_data = get_data(username=username, structured=False)
     topics = input(f"""Kindly write the topics you love or like to get news about and write it in the following format - 
 Format : topic1,topic2,topic3....(separate with a comma)
 Topics : """)
     topics_list = topics.split(",")
 
-    #If in data personalization in None then....
+    #If in data personalization in None, then....
     if user_data["personalization"] is None:
         user_data["personalization"] = []
 
@@ -80,7 +91,7 @@ Topics : """)
         user_data["personalization"].append(topic)
 
     #Saving the updated data
-    with open(f"user_accounts/{username}.json", "w") as file:
+    with open(f"{indi_acc_path}", "w") as file:
         json.dump(user_data, file, indent=4)
 
     #Ending the process
@@ -92,11 +103,14 @@ Topics : """)
 
 #Function for changing email
 def change_mail(username, updated_email):
+    # Getting the path so that we can access that file anywhere
+    indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+
     user_data = get_data(username, structured=False)
     user_data["email"] = updated_email
 
     #Updating data
-    with open(f"user_accounts/{username}.json", "w") as file:
+    with open(f"{indi_acc_path}", "w") as file:
         json.dump(user_data, file, indent=4)
 
     return f"{col()}Data updated successfully !!!"
@@ -114,7 +128,7 @@ def delete_account(username):
         os.remove(f"user_accounts/{username}.json")
         print("Account deleted successfully !!!")
 
-        with open(f"subscribers.json", "r") as file:
+        with open(f"{subscribers_path}", "r") as file:
             subs = json.load(file)
 
         #Trying to delete the user's name from the list, and if they are not there,
@@ -125,7 +139,7 @@ def delete_account(username):
             #Pass is intentional
             pass
 
-        with open(f"subscribers.json", "w") as file:
+        with open(f"{subscribers_path}", "w") as file:
             json.dump(subs, file)
 
     elif y_or_n == "n":

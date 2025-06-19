@@ -11,6 +11,7 @@ What will this do -
 import json
 import colours as c
 from colours import ran_col as col
+from get_path import get_path
 
 #Function
 #This function would be used to add the username or update frequency
@@ -18,11 +19,15 @@ def add_remove_subscriber(username, frequency=2, personalization=None, add=True)
     #If add=True then will add the user
     #If add=False then will remove the user
     try:
+        # Getting the path so that we can access that file anywhere
+        indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+        subscribers_path = get_path("account_sys", "subscribers.json")
+
         #Confirming tha frequency is int
         frequency = int(frequency)
 
         #Turning on the subscription in accounts data (in user_accounts)
-        with open(f"user_accounts/{username}.json", "r") as file:
+        with open(f"{indi_acc_path}", "r") as file:
             account_data = json.load(file)
 
         if add:
@@ -41,11 +46,11 @@ def add_remove_subscriber(username, frequency=2, personalization=None, add=True)
             account_data["smartmail_frequency"] = None
             account_data["personalization"] = []
 
-        with open(f"user_accounts/{username}.json", "w") as file:
+        with open(f"{indi_acc_path}", "w") as file:
             json.dump(account_data, file, indent=4)
 
         #Updating the list of subscribers
-        with open("subscribers.json", "r") as file:
+        with open(f"{subscribers_path}", "r") as file:
             data = json.load(file)
 
         #Adding/Updating the user
@@ -56,7 +61,7 @@ def add_remove_subscriber(username, frequency=2, personalization=None, add=True)
         if not add:
             del data[username]
 
-        with open("subscribers.json", "w") as file:
+        with open(f"{subscribers_path}", "w") as file:
             json.dump(data, file, indent=4)
 
         #Ending the process

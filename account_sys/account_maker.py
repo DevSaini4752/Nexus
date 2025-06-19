@@ -9,22 +9,25 @@
 #Importing modules
 import json
 import os
-
 import decouple
-
+from get_path import get_path
 from smart_mail import smart_mail
 import random
 import colours as c
 import datetime
 
+#Getting the paths
+default_path = get_path("account_sys", "default.json")
+history_path = get_path("account_sys", "history.json")
+
 #Getting the data to put in a new account
-with open("default.json", "r") as file:
+with open(f"{default_path}", "r") as file:
     data_format = json.load(file)
 
 #Func for making an account
 def make_account(username, password, email, wanted_topics=None):
     #Verifying whether there was no same username in the system
-    with open("history.json", "r") as history_file:
+    with open(f"{history_path}", "r") as history_file:
         history = json.load(history_file)
 
     if username in history["usernames"]:
@@ -65,7 +68,10 @@ Kindly put that token : """)
 
     #Making the account if email is verified
 
-    with open(f"user_accounts/{username}.json", "w") as account_file:
+    #Getting the path of that individual account
+    indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+
+    with open(f"{indi_acc_path}", "w") as account_file:
         #Editing the data according to need
         data_format["username"] = username
         data_format["password"] = password
@@ -81,7 +87,7 @@ Kindly put that token : """)
     #Updating the history of username
     history["usernames"].append(username)
 
-    with open("history.json", "w") as update_hist:
+    with open(f"{history_path}", "w") as update_hist:
         json.dump(history, update_hist, indent=4)
 
     return f"{c.ran_col()}Account created successfully!!!{c.end}\n"
@@ -89,7 +95,6 @@ Kindly put that token : """)
 #Trials and testing
 if __name__ == "__main__":
     #Getting my mail for testing
-    import decouple
     mail = decouple.config("MY_PERSONAL_MAIL")
     print(make_account(username="Dev", password="123456789", email=mail))
 

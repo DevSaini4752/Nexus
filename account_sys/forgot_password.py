@@ -11,6 +11,7 @@ from colours import ran_col as col
 import random
 from smart_mail import smart_mail
 from datetime import datetime
+from get_path import get_path
 
 #Getting variables from .env
 sys_mail = decouple.config("MAIL_FOR_SMART_MAIL")
@@ -19,8 +20,11 @@ app_pass = decouple.config("GMAIL_APP_PASSWORD")
 #Function
 def reset_pass(username, new_password):
     try:
+        # Getting the path so that we can access that file anywhere
+        indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+
         #Openening the file and getting the data (mail, passw, etc.)
-        with open(f"user_accounts/{username}.json", "r") as file:
+        with open(f"{indi_acc_path}", "r") as file:
             data = json.load(file)
             user_email = data["email"]
 
@@ -53,7 +57,7 @@ Kindly insert the token : """)
         data["dates_of_password_change"].append(str(datetime.now())[0:10])
 
         #Updating password at the file
-        with open(f"user_accounts/{username}.json", "w") as file:
+        with open(f"{indi_acc_path}", "w") as file:
             json.dump(data, file, indent=4)
 
         #Ending the process

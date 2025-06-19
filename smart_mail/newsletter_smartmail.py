@@ -8,21 +8,17 @@ This module will be used to send newsletters to user. What will this do -
 
 #Importing modules
 import json
-import os
 import news
 import datetime
 import smart_mail
+from get_path import get_path
 
-#Function to be able to connect to files in outer directories
-#This will allow you to access any file/dir in Nexus folder
-def get_path(*parts):
-    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), *parts)
 
 path_subscribers = get_path("account_sys", "subscribers.json")
 path_user_accounts = get_path("account_sys", "user_accounts")
 
 # Load JSON data
-with open(path_subscribers, 'r') as f:
+with open(f"{path_subscribers}", 'r') as f:
     subscribers = json.load(f)
     keys_subs = subscribers.keys()
 

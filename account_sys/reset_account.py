@@ -13,12 +13,18 @@
 import json
 import colours as c
 from colours import ran_col as col
+from get_path import get_path
 
 #Function
 def reset_account(username, password):
     try:
+        # Getting the path so that we can access that file anywhere
+        indi_acc_path = get_path("account_sys", "user_accounts", f"{username}.json")
+        default_path = get_path("account_sys", "default.json")
+        subscribers_path = get_path("account_sys", "subscribers.json")
+
         #Checking if the password is correct
-        with open(f"user_accounts/{username}.json", "r") as file:
+        with open(f"{indi_acc_path}", "r") as file:
             data = json.load(file)
             original_pass = data["password"]
 
@@ -28,7 +34,7 @@ def reset_account(username, password):
 
         #Reseting data of the account
         #Getting the data of default
-        with open("default.json", "r") as default:
+        with open(f"{default_path}", "r") as default:
             default = json.load(default)
 
         #Keeping some imp data as it is
@@ -38,15 +44,15 @@ def reset_account(username, password):
         default["account_making_date"] = data["account_making_date"]
 
         #Updating data of the user account (resetting)
-        with open(f"user_accounts/{username}.json", "w") as file:
+        with open(f"{indi_acc_path}", "w") as file:
             json.dump(default, file, indent=4)
 
         #Removing name from the subscriber list
-        with open("subscribers.json", "r") as file:
+        with open(f"{subscribers_path}", "r") as file:
             subscribers = json.load(file)
             del subscribers[data["username"]]
 
-        with open("subscribers.json", "w") as file:
+        with open(f"{subscribers_path}", "w") as file:
             json.dump(subscribers, file)
 
         #Ending the process
