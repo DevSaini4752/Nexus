@@ -14,6 +14,7 @@ from get_path import get_path
 from smart_mail import smart_mail
 import random
 import colours as c
+from colours import ran_col as col
 import datetime
 
 #Getting the paths
@@ -31,7 +32,7 @@ def make_account(username, password, email, wanted_topics=None):
         history = json.load(history_file)
 
     if username in history["usernames"]:
-        msg = f"{c.acidic_red}Kindly choose another username as this username has been already used{c.end}\n"
+        msg = f"{c.acidic_red}Kindly choose another username as this username has been already used{c.end}"
         return msg
 
     #Verifying email
@@ -56,15 +57,16 @@ Check for the token in SPAM if not found.
 Kindly put that token : """)
 
     if verifying == token:
-        print("Correct token !!!, Email verified...")
+        print(f"{col()}Correct token !!!, Email verified...{c.end}")
 
     else:
         msg = f"User failed to verify the email, {c.acidic_red}Try Again!!!{c.end}\n"
         return msg
 
     #Making the directory, if not found
-    if not os.path.exists("user_accounts"):
-        os.makedirs("user_accounts")
+    path_for_dir = get_path("account_sys", "user_accounts")
+    if not os.path.exists(path_for_dir):
+        os.makedirs(path_for_dir)
 
     #Making the account if email is verified
 

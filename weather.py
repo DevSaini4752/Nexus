@@ -26,7 +26,7 @@ key = decouple.config('WEATHERSTACK_API_KEY')
 
 
 #Function for current weather
-def current_weather(unit="c", location="New Delhi", celsius=False):
+def current_weather(unit="f", location="New Delhi", celsius=False):
 
     url = "https://api.weatherstack.com/current?"
     params = {

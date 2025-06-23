@@ -33,8 +33,7 @@ def reset_pass(username, new_password):
 
         #Sending the verification token
         subject = "Verification token for Password reset"
-        content = f"""This mail has been sent from NEXUS and we want to verify that you are the only one who is 
-try to change the password so pls enter the token....
+        content = f"""This mail has been sent from NEXUS and we want to verify that you are the only one who is trying to change the password so pls enter the token....
 Token : {token}"""
 
         smart_mail.sending(content=content, subject=subject, to=user_email)

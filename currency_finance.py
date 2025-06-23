@@ -54,7 +54,7 @@ with open("currencies_list.json", "r") as file:
 #Error checker
 #API allways return success status
 def error_check(data, currencies=None):
-    if not data["success"]:
+    if not data["success"]:#As it returns True or false
 
         code = str(data["error"]["code"])
 
@@ -107,7 +107,7 @@ Currency Code : Currency Name : Currency Value
 
     #Will use curr
     data_quotes = data['quotes']
-    data_keys = list(data_quotes.keys())
+    data_keys = data_quotes.keys()
 
     for user_curr in data_keys:
         value = data_quotes[user_curr]
@@ -123,7 +123,7 @@ Currency Code : Currency Name : Currency Value
 
 #Final function which would be the real show casers
 def live(currencies=None):
-    #Currencies must be in list type
+    """'Currencies' parameter must be in list type"""
     #Seprating depending-on-currencies parameter value
 
     #If no currencies are specified, then we will give whatever we get
@@ -147,8 +147,9 @@ def live(currencies=None):
         return f"{c.acidic_red}Unexpected error !!!{c.end}"
 
 
-
+#Fnction to get old data
 def historical(date, currencies=None):
+    """'Currencies' parameter must be in list type"""
     # If no currencies are specified, then we will give whatever we get
     if currencies is None:
         params = {
@@ -171,6 +172,17 @@ def historical(date, currencies=None):
     # If something unexpected happens, like our system doesn't pass as a list whatever they gave
     else:
         return f"{c.acidic_red}Unexpected error !!!{c.end}"
+
+#Func for getting the list of currencies
+def list_currencies():
+    zipped_list = zip(currencies_list.keys(), currencies_list.values())
+
+    #Preparing final output
+    output = f"{col()}Here is the list of all currencies and their codes - {c.end}\nCode : Currency"
+    for keys, val in zipped_list:
+        output = output + f"{col()}\n{keys} : {val}{c.end}"
+
+    return output
 
 
 if __name__=="__main__":

@@ -10,7 +10,7 @@ This module will be used to send newsletters to user. What will this do -
 import json
 import news
 import datetime
-import smart_mail
+from .smart_mail import sending
 from get_path import get_path
 
 
@@ -44,7 +44,7 @@ def send_news():
             days_difference = (last_news_mail_sent_date - live_time).days
 
 
-        #If the user's time period completed to send next mail or if it's first
+        #If the user's time period completed to send next mail or if no mail is sent before
         if days_difference >= frequency or user_data["last_news_mail_sent_date"] == "":
 
             #Defining the var earlier so that there is no need of using a global statement
@@ -54,7 +54,7 @@ def send_news():
             if topic != "" and not topic is None and topic != []:
                 newsletter = news.getnews(topic=topic)
 
-            #If a user just wants news
+            #If a user just wants news and personalization is empty
             elif topic == "" or topic is None or topic == []:
                 newsletter = news.getnews()
 
@@ -63,7 +63,7 @@ def send_news():
 {newsletter}"""
 
             #Sending mail
-            smart_mail.sending(content, subject, to=user_data["email"])
+            sending(content, subject, to=user_data["email"])
 
             #Updating data in user's data, updating only if news is sent
             user_data["last_news_mail_sent_date"] = live_time

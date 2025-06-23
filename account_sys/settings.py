@@ -27,7 +27,7 @@ import random
 from get_path import get_path
 
 #Path for subscribers.json
-subscribers_path = get_path("account_sys", "subscriber.json")
+subscribers_path = get_path("account_sys", "subscribers.json")
 
 #Functions for different purposes
 #For extracting the data of the user
@@ -39,16 +39,21 @@ def get_data(username, structured=True):
         with open(f"{indi_acc_path}", "r") as file:
             user_data = json.load(file)
             pass_date = user_data["dates_of_password_change"]
-            pass_date = ", ".join(pass_date)
+            personalization = user_data["personalization"]
+            if pass_date != [] and pass_date is not None:
+                pass_date = ", ".join(pass_date)
+
+            if personalization is not None and personalization != []:
+                personalization = ", ".join(personalization)
 
         #Returning structured data
         if structured:
-            struc_out = f"""
+            struc_out = f"""{col()}
 Username - {user_data["username"]}
 Password - {user_data["password"][0:1]}*****{user_data["password"][-1:]}
 Password changing dates - {pass_date}
 Email - {user_data["email"]}
-Personalized topics - {", ".join(user_data["personalization"])}
+Personalized topics - {personalization}
 Frequency of newsletter - {user_data["smartmail_frequency"]}
 Account making date - {user_data["account_making_date"]}
 Last mail date - {user_data["last_mail_sent_time"]}
@@ -125,7 +130,12 @@ def delete_account(username):
 
     if y_or_n == "y":
         print(f"Deleting the account ({username})....!!!")
-        os.remove(f"user_accounts/{username}.json")
+
+        #Getting the path for an account file
+        path_user_account = get_path("account_sys", "user_accounts", f"{username}.json")
+
+        #Deleting
+        os.remove(path_user_account)
         print("Account deleted successfully !!!")
 
         with open(f"{subscribers_path}", "r") as file:
@@ -133,11 +143,8 @@ def delete_account(username):
 
         #Trying to delete the user's name from the list, and if they are not there,
         # then we will let it pass
-        try:
+        if username in subs:
             del subs[username]
-        except KeyError:
-            #Pass is intentional
-            pass
 
         with open(f"{subscribers_path}", "w") as file:
             json.dump(subs, file)

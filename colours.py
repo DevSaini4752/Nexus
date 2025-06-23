@@ -162,14 +162,15 @@ end      = "\033[0m"
 
 #Function for random color (! only some colors are chosen)
 def ran_col():
-    cols = [hazard_orange, electric_Blue, mint_Green, hot_Pink, acid_green]
+    cols = [electric_Blue, mint_Green, hot_Pink, acid_green]
     random.shuffle(cols)
     col = random.choice(cols)
+    col = end + col
     return col
 
 if __name__ == "__main__":
     #Testing colors
     print(f"""
-{violet}Hi Guys, How are you all, is this looking good, just testing{end}
+{ran_col()}Hi Guys, How are you{ran_col()} all, is this {ran_col()}looking good, just {ran_col()}testing{end}
 
 """)
