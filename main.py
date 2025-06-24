@@ -170,8 +170,7 @@ Note : If you want multiple currencies together the kindly separate them with ',
 {c.end}
 {col()}Kindly put the code of the the currency : {c.end}""")
 
-                #Converting currency into a list, as it accepts in list format only
-                currency = currency.split(",")
+
 
             if opt_c == "a":
                 print(currency_finance.live(currencies=currency))
@@ -219,12 +218,15 @@ Note : If you want multiple currencies together the kindly separate them with ',
 #Final function
 def main():
     """This is the main function that will handle and execute everything"""
-    try:
-        #This function will run every time the user opens application
-        smart_mail.newsletter_smartmail.send_news()
+    print(f"{col()}Welcome user, I hope you will enjoy our services")
 
-        print(f"{col()}Welcome user, I hope you will enjoy our services")
-        while True:
+    #This function will run every time the user opens an application and will check
+    # data and  will send the newsletters  to subscribers  according to  their time
+    # period and date
+    smart_mail.newsletter_smartmail.send_news()
+
+    while True:
+        try:
             options = input(f"""{col()}\na. Register\nb. Login\nc. Forgot Password\nKindly choose one of the option a/b : """).lower()
 
             #If the user wants to register
@@ -253,9 +255,9 @@ def main():
             else:
                 print(f"{c.acidic_red}Invalid option!!!{c.end}")
 
-    #For any unexpected error occurred as most of them are already handled
-    except Exception as ex:
-        print(f"{c.acidic_red}Unexpected Error Occurred!!!\nError: {ex}")
+        #For any unexpected error occurred as most of them are already handled
+        except Exception as ex:
+            print(f"{c.acidic_red}Unexpected Error Occurred!!!\nError: {ex}")
 
 #Trial and testing
 if __name__ == "__main__":

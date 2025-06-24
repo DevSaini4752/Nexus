@@ -28,9 +28,8 @@ Possible conditions (for user) :
     5. Get multiple currencies of live
     6. Get multiple currencies of specific date
     
-How will we handle conditions - 
-
-We would have a function and it parameters would be 
+Note : While inserting the currencies list they must be in this string type and in this format -
+     : Format - currency1,currency2,currency3....
 """
 
 #Importing modules
@@ -57,6 +56,11 @@ def error_check(data, currencies=None):
     if not data["success"]:#As it returns True or false
 
         code = str(data["error"]["code"])
+        ex_error = "Nothing"
+
+        #If the data itself return some information then adding it to error msg
+        if "info" in data["error"]:
+            ex_error = data["error"]["info"]
 
         #Finding error info through code
         with open("currency_API_errors.json", "r") as file_ex:
@@ -66,7 +70,8 @@ def error_check(data, currencies=None):
         output = f"""{c.acidic_red}!!!ERROR OCCURRED!!!
         Success     : {data["success"]}
         Error Code  : {code}
-        Info        : {error}"""
+        Info        : {error}
+        Ex. Info    : {ex_error}"""
 
         return output
 
@@ -123,7 +128,6 @@ Currency Code : Currency Name : Currency Value
 
 #Final function which would be the real show casers
 def live(currencies=None):
-    """'Currencies' parameter must be in list type"""
     #Seprating depending-on-currencies parameter value
 
     #If no currencies are specified, then we will give whatever we get
@@ -134,7 +138,7 @@ def live(currencies=None):
         return get_currencies(params=params)
 
     #If currencies are specified
-    elif isinstance(currencies, list):
+    elif currencies is not None:
         params = {
             'currencies': currencies,
             'access_key': key
@@ -142,14 +146,13 @@ def live(currencies=None):
 
         return get_currencies(params=params)
 
-    #If something unexpected happens, like our system doesn't pass as a list whatever they gave
+    #If something unexpected happens
     else:
         return f"{c.acidic_red}Unexpected error !!!{c.end}"
 
 
 #Fnction to get old data
 def historical(date, currencies=None):
-    """'Currencies' parameter must be in list type"""
     # If no currencies are specified, then we will give whatever we get
     if currencies is None:
         params = {
@@ -160,7 +163,7 @@ def historical(date, currencies=None):
         return get_currencies(params=params, url=f"{base_url}/historical?")
 
     # If currencies are specified
-    elif isinstance(currencies, list):
+    elif currencies is not None:
         params = {
             'currencies': currencies,
             'access_key': key,
@@ -169,7 +172,7 @@ def historical(date, currencies=None):
 
         return get_currencies(params=params, url=f"{base_url}/historical?")
 
-    # If something unexpected happens, like our system doesn't pass as a list whatever they gave
+    # If something unexpected happens
     else:
         return f"{c.acidic_red}Unexpected error !!!{c.end}"
 
