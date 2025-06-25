@@ -195,7 +195,7 @@ def settings(username):
 Settings....
     - a. Security
     - b. View Data
-    - c. Start or End subscription
+    - c. Start or End Newsletter subscription
     - d. Personalization
     - e. exit
 
@@ -252,7 +252,11 @@ Kindly choose a option - {c.end}""").lower()
             break
 
         elif options == "c":
-            add_remove = input(f"""What do you want -
+            add_remove = input(f"""{col()}
+This subscription would be the newsletter subscription where you would be sent the 
+newsletter according to your personalization and if nothing is there at personali-
+-zation then current affairs would be there and newsletter would be mailed to you.
+What do you want -
 a. Start/Update subscription
 b. End subscription
 Kindly choose a option (a/b) : """).lower()

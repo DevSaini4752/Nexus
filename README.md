@@ -1,7 +1,84 @@
-# 🚀 NEXUS — Intelligent Terminal Personal Assistant
+# 🌐 Nexus—Your Smart Terminal Gateway to the world
+ 
+A powerful, modular, and extensible terminal-based assistant that empowers users with productivity tools, 
+real-time data, and a personal task manager — all backed by a secure account system.
 
-**NEXUS** is a powerful, terminal-based personal assistant designed to be modular, scalable, and intelligent. It brings together multiple everyday tools into a unified CLI system — productivity meets information in one command.
+---
 
+## 🚀 Features
+
+Nexus isn’t your ordinary script — it’s a full ecosystem in your terminal. Here’s what it includes:
+
+### 🔐 Account System
+- Register, login, and reset password securely.
+- Each user has an isolated `.json` data profile.
+- Session-based data handling to reduce I/O overhead and simulate RAM-like storage during usage.
+
+### 📰 News Aggregator
+- Get personalized or general news.
+- Fetch custom headlines by topic, or explore current affairs.
+- API-powered for real-time updates.
+
+### 🗞 Smart Newsletter
+- Automatically sends a personalized daily newsletter to users.
+- Includes top headlines according to your personalization.
+- Built on the modular `Smart_Mail` system using account-level preferences
+
+### 📈 Stock Market Analyzer
+- Search any stock by symbol (e.g., TSLA, INFY).
+- View current, historical, and custom date range data.
+- Clean integration with financial data APIs.
+
+### 💱 Currency Exchange Rates
+- Get real-time exchange rates for any currency.
+- Historical data back to 1999.
+- Base currency: USD.
+
+### 🌦️ Weather Forecast
+- Live weather data for any location.
+- Includes temperature, condition, and more.
+
+### ✅ ToDo Manager (TDM)
+A gamified productivity system with deadline tracking.
+
+- Add tasks with deadlines.
+- Smart point system:
+  - +2 for initializing a task.
+  - -2 if cancelled within 2 mins.
+  - -6 for missing deadlines.
+  - +8 for completing tasks.
+- Modular & now upgraded for account-based task handling.
+
+---
+
+## 🧠 Architecture
+
+- ✅ Modular Design – Over 20+ structured modules.
+- 🔐 `.env` support for secure secrets (API keys and passwords).
+- 🗂️ Data handling per user using `User_Accounts_TDM/` directory.
+- ⚙️ Easily scalable for future additions like GUI or DB.
+
+---
+
+## 📂 Folder Structure (Simplified)
+
+Nexus/<br>
+├── main.py<br>
+├── .env # Contains API keys (gitignored)<br>
+├── example.env # Template for environment variables<br>
+├── SmartMail/ # Modular emailing system<br>
+├── modules/ # All feature modules (news, stocks, weather etc.)<br>
+├── ToDoManager/ # Gamified task manager with account support<br>
+├── UserAccounts.tdm/ # User-wise data folders<br>
+└── README.md
+
+---
+
+## 🔐 Environment Variables
+1. Duplicate the example.env file and rename it to .env
+2. Fill in your own API keys and credentials
+3. Use it as normal
+- Using .env was the first initiative after I mistakenly uploaded the API keys
 ---
 
 ## ⚠ Important Notice
@@ -23,65 +100,26 @@ _toward real-world, secure software development standards._
 
 ---
 
-## 🔐 Environment Variables
-1. Duplicate the example.env file and rename it to .env
-2. Fill in your own API keys and credentials
-3. Use it as normal
-- Using .env was the first initiative after I mistakenly uploaded the API keys
----
+## 🛠 Tech Stack
 
-## 🔧 Planned Features
-
-1. **📢 Live Reports Hub**  
-   - Weather updates for your city  
-   - Latest news headlines  
-   - Currency exchange rates  
-   - Stock and crypto price tracking  
-
-2. **📝 To-Do Manager (TDM)**  
-   - Add, update, delete, and view tasks  
-   - Mark as complete/incomplete  
-   - Sort by date/priority  
-   - Integrated with NEXUS logs  
-
-3. **📧 SmartMail System**  
-   - Sends daily/instant email reports  
-   - User preference-based report generation  
-   - Report includes weather, to-dos, news, and more  
-
-4. **👤 Multi-User Profiles**  
-   - Login/signup with credentials  
-   - Personalized preferences  
-   - Profile-based logs, to-dos, and reports  
-
-5. **📜 Activity Logs & History**  
-   - Tracks everything you do  
-   - Timestamped logs for transparency  
-   - Easy export/view via CLI  
+- **Language**: Python 3.11+
+- **Libraries**: `requests`, `json`, `datetime`, `os`, `dotenv`, and more.
+- **Tools**: Terminal-only; no GUI required.
 
 ---
 
-## ⚙️ Tech Stack
+## 💡 Vision
 
-- Python (Requests, JSON, File Handling)
-- External APIs (for news, weather, currency, stocks, email)
-- Terminal interface (CLI-driven interaction)
+> What started as a simple API practice project turned into a modular, multi-feature, account-based system to help users stay informed, productive, and efficient.
 
 ---
 
-## 📌 Status
-
-This project is currently in **active development**.  
-Features will be implemented step-by-step and updated regularly.
-
-> **Note:** Some features are planned and may evolve based on need or system improvements. Expect bugs, chaos, and pure 🔥.
+## 👨‍💻 Developer
+**Dev Saini**
 
 ---
 
-## 👨‍💻 Built By
+## 📜 License
 
-Dev Saini — student, builder, and code-warrior on a mission.  
-"Code like a monk. Execute like a beast."
-
----
+MIT License (or any you prefer — you can change this later)
 

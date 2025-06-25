@@ -102,7 +102,8 @@ Kindly choose one of the option (a/b/c/d/e) : {c.end}""").lower()
 
 
         if options == "a":
-            opt_a = input(f"""{col()}\nWhat kind of news do you want user ?
+            opt_a = input(f"""{col()}\nIn settings check our newsletter subscriptions!!!
+What kind of news do you want user ?
 a. Custom
 b. From your personalization
 c. Current affairs
