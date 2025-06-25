@@ -149,6 +149,10 @@ def delete_account(username):
         with open(f"{subscribers_path}", "w") as file:
             json.dump(subs, file)
 
+        #Deleting TDM user data file
+        tdm_user_path = get_path("ToDoManager_modified", "user_accounts_TDM", f"{username}.json")
+        os.remove(tdm_user_path)
+
     elif y_or_n == "n":
         print(f"{c.acidic_red}Cancelling the deletion of account !!!{c.end}")
 

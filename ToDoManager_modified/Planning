@@ -89,3 +89,24 @@ sector and now it is fixed.
 Handled exceptions -
 Many more exceptions were there which I have handled so there is minimum
 chance of any error.
+
+Developing Account system -
+This To_Do_Manager wasn't made for account system and we are using it here,
+in this NEXUS project. So I have to make a lot of changes and make this sys
+to work with account system.
+
+A new  folder  would be made like  user_accounts in  account_sys and in that
+dir we are going to store data of different users.
+
+Idea 1 - So there would be a folder named 'user_accounts_TDM' and that would
+contain files  of different usernames and  the data.json file which  was the
+main  file  where all  data was being  stored would  become a temporary data
+holder. The system would bring the data of the user from  user_accounts_TDM/
+by the  username  of the  user and will put that in the data.json and as any
+process would end the system would store the data back  into original user's
+data file and keep the same data in data.json also. It will remove  the data
+from the data.json after user logs out.
+
+We will be making a new module for this  purpose, as I want min. interference
+in old code. To keep the old code stable otherwise  some other problems might
+come into the came and would cause a lot of other trouble.

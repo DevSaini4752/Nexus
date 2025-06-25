@@ -5,13 +5,18 @@ data and other housekeeping"""
 #Importing modules
 import json
 import datetime
-import colours as c
-import resetdata
+import ToDoManager_modified.colours as c
+import ToDoManager_modified.resetdata as resetdata
+import get_path
+
+#Abs. path of files so that they don't get stuck anywhere if we import Main.py out of TDM
+data_json = get_path.get_path("ToDoManager_modified", "data.json")
+
 
 #Func
 def complete(*tasks):
     try:
-        with open("data.json", "r") as file_in:
+        with open(data_json, "r") as file_in:
             data = json.load(file_in)
 
             # Will remove the task given
@@ -32,7 +37,7 @@ def complete(*tasks):
                 print(f"{c.Electric_Blue}Congratulation!!! Task Completed{c.end}")
 
         # Updating the data in data,json
-        with open("data.json", "w") as file_out:
+        with open(data_json, "w") as file_out:
 
             json.dump(data, file_out, indent=4)
 

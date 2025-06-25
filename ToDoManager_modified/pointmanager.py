@@ -12,8 +12,11 @@ Next, 2nd would be for what purpose it was deducted or added."""
 #importing module
 import json
 import datetime
-import colours as c
+import ToDoManager_modified.colours as c
+import get_path
 
+#Abs. path of files so that they don't get stuck anywhere if we import Main.py out of TDM
+data_json = get_path.get_path("ToDoManager_modified", "data.json")
 
 # Function for the purpose
 def point_manger(points, purpose):
@@ -22,14 +25,14 @@ def point_manger(points, purpose):
         live_time = datetime.datetime.now()
 
         #Updating data
-        with open("data.json", "r") as file:
+        with open(data_json, "r") as file:
             data = json.load(file)
             data["total_points"] += points
             history = data["PoiHis"]
             history[f"{live_time}"] = [f"{points}", f"{purpose}"]
 
         #Saving data
-        with open("data.json", "w") as file:
+        with open(data_json, "w") as file:
             json.dump(data, file, indent =4)
 
     except Exception as ex:

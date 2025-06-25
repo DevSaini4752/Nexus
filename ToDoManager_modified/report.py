@@ -3,14 +3,18 @@
 #Importing modules
 import json
 import datetime
-from randomcol import col
-import colours as c
+from ToDoManager_modified.randomcol import col
+import ToDoManager_modified.colours as c
+import get_path
+
+#Abs. path of files so that they don't get stuck anywhere if we import Main.py out of TDM
+data_json = get_path.get_path("ToDoManager_modified", "data.json")
 
 #Func
 def report():
 
     #Taking out the data
-    with open("data.json", "r") as file:
+    with open(data_json, "r") as file:
         data = json.load(file)
 
     #Increasing readability

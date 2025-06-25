@@ -38,7 +38,7 @@ _toward real-world, secure software development standards._
    - Currency exchange rates  
    - Stock and crypto price tracking  
 
-2. **📝 To-Do Manager**  
+2. **📝 To-Do Manager (TDM)**  
    - Add, update, delete, and view tasks  
    - Mark as complete/incomplete  
    - Sort by date/priority  

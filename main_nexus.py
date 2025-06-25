@@ -14,6 +14,7 @@ import currency_finance
 import smart_mail.newsletter_smartmail
 from get_path import get_path
 import json
+import ToDoManager_modified.Main
 
 
 
@@ -92,8 +93,9 @@ a. News
 b. Stock market
 c. Currency exchange
 d. Weather
-e. Settings
-f. Logout
+e. To Do Manager
+f. Settings
+g. Logout
 {c.end}{col()}
 Kindly choose one of the option (a/b/c/d/e) : {c.end}""").lower()
 
@@ -203,12 +205,15 @@ Note : If you want multiple currencies together the kindly separate them with ',
                 print(weather.current_weather(location=location))
 
 
-
         elif options == "e":
-            settings.settings(username)
+            ToDoManager_modified.Main.main(username)
 
 
         elif options == "f":
+            settings.settings(username)
+
+
+        elif options == "g":
             print(f"{col()}\nLoging out....")
             break
 

@@ -1,7 +1,7 @@
 """This module will just give random color from a specific theme"""
 
 #Importing modules
-import colours as c
+import ToDoManager_modified.colours as c
 import random
 
 #Func For giving random color

@@ -4,16 +4,20 @@ accordingly"""
 
 #Importing Modules
 import json
-import colours as c
+import ToDoManager_modified.colours as c
 import time
-import pointmanager
-import resetdata
+import ToDoManager_modified.pointmanager as pointmanager
+import ToDoManager_modified.resetdata as resetdata
+import get_path
+
+#Abs. path of files so that they don't get stuck anywhere if we import Main.py out of TDM
+data_json = get_path.get_path("ToDoManager_modified", "data.json")
 
 # Function
 # mtd -> Manage task and data
 def mtd(hours=True, **tasks):
     try:
-        with open("data.json", "r") as file_op:
+        with open(data_json, "r") as file_op:
             data = json.load(file_op)
 
     # Just to don't raise error during an empty file,
@@ -23,7 +27,7 @@ def mtd(hours=True, **tasks):
 
         #Re-executing the task after reset to give vars to execute further proceedings
 
-        with open("data.json", "r") as file_op:
+        with open(data_json, "r") as file_op:
             data = json.load(file_op)
 
     except FileNotFoundError:
@@ -31,7 +35,7 @@ def mtd(hours=True, **tasks):
 
         #Re-executing the task after reset to give vars to execute further proceedings
 
-        with open("data.json", "r") as file_op:
+        with open(data_json, "r") as file_op:
             data = json.load(file_op)
 
     #Keeping this out of the first try part because if
@@ -59,7 +63,7 @@ def mtd(hours=True, **tasks):
         return print(msg)
 
     #Updating the data
-    with open("data.json", "w") as file_wr:
+    with open(data_json, "w") as file_wr:
         json.dump(data, file_wr, indent=4)
 
     #Adding the points

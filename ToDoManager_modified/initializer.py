@@ -5,18 +5,22 @@ the  deadline is  near, then  it  will  warn the  user. May this
 initializer would be called many times depending on the situation."""
 
 #Importing modules
-import pointmanager
+import ToDoManager_modified.pointmanager as pointmanager
 import json
 import time
-import taskremover
-import colours as c
-from resetdata import reset
+import ToDoManager_modified.taskremover as taskremover
+import ToDoManager_modified.colours as c
+from ToDoManager_modified.resetdata import reset
+import get_path
+
+#Abs. path of files so that they don't get stuck anywhere if we import Main.py out of TDM
+data_json = get_path.get_path("ToDoManager_modified", "data.json")
 
 
 #Fucntion
 def initializer():
     try:
-        with open("data.json", "r") as file:
+        with open(data_json, "r") as file:
             data = json.load(file)
 
         #This will not allow the system to edit important data

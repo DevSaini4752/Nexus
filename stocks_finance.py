@@ -3,7 +3,7 @@ APIs we are going to use -
     - Marketstack (100 requests per month)
 
 The user will be asked for the code of the stock about whom they want to know
-in the main.py. Then that  input will be given to this module, and  this will
+in the main_nexus.py. Then that  input will be given to this module, and  this will
 give that code to API and will return the data to the user in a better format.
 """
 

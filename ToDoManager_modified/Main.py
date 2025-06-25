@@ -2,21 +2,28 @@
 housekeeping."""
 
 #Importing modules
-import colours as c
-import initializer
-import taskdatamanager
-import taskremover
+import ToDoManager_modified.colours as c
+import ToDoManager_modified.initializer as initializer
+import ToDoManager_modified.taskdatamanager as taskdatamanager
+import ToDoManager_modified.taskremover as taskremover
 import time
-import resetdata
-import report
-import completetsk
-from randomcol import col
-from animations import type_write
+import ToDoManager_modified.resetdata as resetdata
+import ToDoManager_modified.report as report
+import ToDoManager_modified.completetsk as completetsk
+from ToDoManager_modified.randomcol import col
+from ToDoManager_modified.animations import type_write
+from ToDoManager_modified import account_adapter
+import get_path
 
 
-def main():
+def main(username):
+    #Adapting the system
+    account_adapter.adapter(username)
+
     #Using initializer to initialize sys
     initializer.initializer()
+
+    #Intro
     type_write(f"""{col()}Get ready to kick chaos out of your day! This is ToDoManager – your no-nonsense task tracker. Simple, fast, 
 and made to keep your brain clutter-free. Let’s roll{c.end}""",  wait=0.03)
 
@@ -100,9 +107,21 @@ Kindly choose (a/b/c/d) : {c.end}""").lower()
 
 
         elif user == "e":
-            col()
-            type_write(f"""{col()}Thank you for using our services. Stay focused, 
+            #Getting the path that its data can be removed
+            data_json = get_path.get_path("ToDoManager_modified", "data.json")
+
+            print(f"{col()}Saving data.....{c.end}")
+
+            # Updating the user tdm data file
+            account_adapter.updater(username)
+
+            # Emptying the data.json to keep the user's data safe
+            file = open(data_json, "w")
+            file.close()
+
+            type_write(f"""{col()}Saved\nThank you for using our services. Stay focused, 
 stay organized - and keep building{c.end}""", wait=0.03)
+
             break
 
         elif user == "f":
@@ -121,11 +140,16 @@ Are you sure (Y/n) !? : """).lower()
         else:
             print(f"\n{c.red}Invalid Option !!!{c.end}")
 
-        #Running initializer if 2 mins have passed
+        #Running initializer and updater if 2 mins have passed
         diff = int(time.time()) - start_time
         if diff >= 120:
             initializer.initializer()
             start_time = int(time.time())
 
+            # Updating the user tdm data file
+            account_adapter.updater(username)
+
+
+
 if __name__ == "__main__":
-    main()
+    main("dev2")

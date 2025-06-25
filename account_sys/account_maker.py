@@ -92,6 +92,17 @@ Kindly put that token : """)
     with open(f"{history_path}", "w") as update_hist:
         json.dump(history, update_hist, indent=4)
 
+
+    #Also making a data file of user for TDM in user_accounts_TDM dir
+    # Will use 'databackup.json' file to take default format/structure
+    path_for_databackup = get_path("ToDoManager_modified", "databackup.json")
+    with open(path_for_databackup, "r") as file_TDM:
+        format_tdm = json.load(file_TDM)
+
+    acc_data_path_tdm = get_path("ToDoManager_modified", "user_accounts_TDM", f"{username}.json")
+    with open(acc_data_path_tdm, "w") as file_acc:
+        json.dump(format_tdm, file_acc, indent=4)
+
     return f"{c.ran_col()}Account created successfully!!!{c.end}\n"
 
 #Trials and testing
